@@ -1,0 +1,3 @@
+rootProject.name = 'SpringDevTest'
+include 'SpringUnitTestProblem'
+
