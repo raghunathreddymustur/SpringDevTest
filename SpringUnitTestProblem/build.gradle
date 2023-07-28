@@ -28,11 +28,32 @@ dependencies {
     implementation 'org.hibernate:hibernate-core:5.4.2.Final'
     implementation 'org.hsqldb:hsqldb:2.5.0'
     annotationProcessor 'org.projectlombok:lombok:1.18.8'
-
+    testImplementation 'junit:junit:4.12'
+    testRuntimeOnly("org.junit.vintage:junit-vintage-engine:5.8.2")
 
 
 }
-
 test {
     useJUnitPlatform()
 }
+
+
+task unitTests(type: Test) {
+    useJUnitPlatform()
+    testClassesDirs = sourceSets.test.output.classesDirs
+    include '**/UnitTestsSuite.class'
+}
+
+task integrationTests(type: Test) {
+    useJUnitPlatform()
+    testClassesDirs = sourceSets.test.output.classesDirs
+    include '**/IntegrationTestsSuite.class'
+}
+
+
+
+// Configure the 'allTests' task to depend on both unitTests and integrationTests
+task allTests(dependsOn: ['unitTests', 'integrationTests']) {
+    // An empty task, just for grouping the other test tasks
+}
+
