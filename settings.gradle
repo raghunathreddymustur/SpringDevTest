@@ -1,3 +1,5 @@
 rootProject.name = 'SpringDevTest'
 include 'SpringUnitTestProblem'
+include 'SpringIntegrationTestingAnnotations'
+include 'SpringBootTesting'
 
